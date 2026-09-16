@@ -71,35 +71,99 @@ header nav a {
     transform: scale(1.05);
 }
 
-/* 4. Sección de Servicios */
+/* 4. Sección de Servicios con Animaciones */
 #servicios {
-    padding: 60px 5%;
+    padding: 80px 5%;
     text-align: center;
+    background-color: #f4f7f6;
 }
 
 #servicios h2 {
     color: #0077b6;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.subtitulo-seccion {
+    color: #777;
+    font-size: 14px;
     margin-bottom: 40px;
 }
 
 .servicios-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/* La Tarjeta Base Interactiva */
 .tarjeta {
     background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
     border-top: 4px solid #00b4d8;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    
+    /* Esta línea es el secreto: hace que todo cambie suavemente y no de golpe */
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.icono-servicio {
+    font-size: 40px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
 }
 
 .tarjeta h3 {
     margin-bottom: 15px;
-    color: #333;
+    color: #222;
+    font-size: 22px;
 }
+
+.tarjeta p {
+    color: #666;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* El botón oculto que aparecerá con la animación */
+.btn-saber-mas {
+    display: inline-block;
+    color: #0077b6;
+    font-weight: bold;
+    font-size: 15px;
+    opacity: 0; /* Oculto al principio */
+    transform: translateY(10px); /* Un poco hacia abajo */
+    transition: all 0.3s ease;
+}
+
+/* EFECTOS DE ANIMACIÓN (Al pasar el mouse o tocar) */
+
+.tarjeta:hover {
+    transform: translateY(-10px); /* La tarjeta se eleva */
+    box-shadow: 0 15px 30px rgba(0, 119, 182, 0.15); /* Sombra azulada más profunda */
+    border-top-color: #0077b6; /* El borde superior se oscurece */
+    background-color: #fbfefe; /* Cambia sutilmente el fondo */
+}
+
+/* El icono brinca un poco al activarse */
+.tarjeta:hover .icono-servicio {
+    transform: scale(1.15) rotate(5deg);
+}
+
+/* El botón oculto sube y se vuelve visible */
+.tarjeta:hover .btn-saber-mas {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
 
 /* 5. Sección de Contacto */
 #contacto {
